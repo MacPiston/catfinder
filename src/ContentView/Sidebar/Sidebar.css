@@ -1,0 +1,13 @@
+.formInput {
+  width: 80%;
+}
+
+#formSubmitButton {
+  width: 100%;
+  color: white;
+  border-color: white;
+}
+#formSubmitButton:hover {
+  color: darkorange;
+  background: white;
+}
