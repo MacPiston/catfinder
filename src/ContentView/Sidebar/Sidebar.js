@@ -10,6 +10,7 @@ import {
   CheckboxContainer,
   StyledCheckbox,
 } from "./Sidebar.Components";
+import { ThemeProvider } from "styled-components";
 
 class Sidebar extends Component {
   sortTypes = [
@@ -22,24 +23,20 @@ class Sidebar extends Component {
     return <option>{type}</option>;
   });
 
-  checkboxTypes2 = {
+  checkboxTypes = {
     all: "Wszystkie",
     cats: "Koty",
     dogs: "Psy",
     others: "Pozostałe",
   };
   checks = () => {
-    var ret = "";
-    for (var key in this.checkboxTypes2) {
-      ret += (
-        <Form.Check
-          type={"checkbox"}
-          id={key}
-          label={this.checkboxTypes2[key]}
-        />
+    var temp = "";
+    for (let key in this.checkboxTypes) {
+      temp += (
+        <Form.Check type="checkbox" id={key} label={this.checkboxTypes[key]} />
       );
     }
-    return ret;
+    return temp;
   };
 
   onFilterSubmit = (e) => {
@@ -83,7 +80,7 @@ class Sidebar extends Component {
             <Form.Check type={"checkbox"} id={"cats"} label={"Koty"} />
             <Form.Check type={"checkbox"} id={"dogs"} label={"Psy"} />
             <Form.Check type={"checkbox"} id={"others"} label={"Pozostałe"} /> */}
-            {this.checks}
+            {this.checks()}
           </CheckboxContainer>
 
           <HeaderContainer>
