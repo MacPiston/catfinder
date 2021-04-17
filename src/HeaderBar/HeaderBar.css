@@ -1,33 +1,34 @@
 #profileImage {
-    height: 38px;
-    width: 38px;
-    margin-left: 10px;
+  height: 38px;
+  width: 38px;
+  margin-left: 10px;
+  border: 1px solid darkorange;
 }
 
 #newPostButton {
-    margin-left: 5px;
-    background: darkorange;
-    border-color: darkorange;
+  margin-left: 5px;
+  background: darkorange;
+  border-color: darkorange;
 }
 
 #searchButton {
-    border-color: darkorange;
-    color: darkorange;
+  border-color: darkorange;
+  color: darkorange;
 }
 
 #searchButton:hover {
-    background: darkorange;
-    color: white;
+  background: darkorange;
+  color: white;
 }
 
 #searchForm {
-    margin-right: 22px;
+  margin-right: 22px;
 }
 
 #catfinderText {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #headerLink::selection {
-    color: darkorange;
+  color: darkorange;
 }

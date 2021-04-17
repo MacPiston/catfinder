@@ -15,7 +15,11 @@ import {
 } from "./PostInfoModal.Components";
 
 function NumberComponent(props) {
-  return <div style={{ fontSize: 17 }}>{props.number}</div>;
+  return (
+    <div style={{ fontSize: 17 }}>
+      <a href="tel:${ props.number }">{props.number}</a>
+    </div>
+  );
 }
 
 class PostInfoModal extends React.Component {
