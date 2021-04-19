@@ -10,7 +10,14 @@ import {
   FormControl,
   Modal,
 } from "react-bootstrap";
-import "./HeaderBar.css";
+
+import {
+  CatfinderText,
+  ProfileImage,
+  NewPostButton,
+  SearchButton,
+  SearchForm,
+} from "./HeaderBar.Components";
 
 const ProfileModal = (props) => {
   return (
@@ -50,8 +57,10 @@ class HeaderBar extends React.Component {
     return (
       <div id={"navbarContainer"}>
         <Navbar className={"navbarOrange"} bg={"light"} expand={"lg"}>
-          <Navbar.Brand id={"catfinderText"}>CatFinder</Navbar.Brand>
+          <CatfinderText>CatFinder</CatfinderText>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
           <Navbar.Collapse>
             <Nav className={"mr-lg-1"}>
               <Nav.Link id={"headerLink"} active={activeTabs["home"]}>
@@ -66,33 +75,32 @@ class HeaderBar extends React.Component {
               <Nav.Link id={"headerLink"} active={activeTabs["others"]}>
                 Pozostałe
               </Nav.Link>
-              <Button
-                id={"newPostButton"}
+              <NewPostButton
                 variant={"primary"}
                 onClick={this.props.newPostButtonHandler}
               >
                 Dodaj ogłoszenie
-              </Button>
+              </NewPostButton>
             </Nav>
           </Navbar.Collapse>
+
           <Form inline id={"searchForm"}>
             <InputGroup className={"mr-lg-1"}>
-              <FormControl placeholder="Szukaj..." />
+              <SearchForm placeholder="Szukaj..." />
               <InputGroup.Append>
-                <Button id={"searchButton"} variant={"outline-primary"}>
-                  Szukaj
-                </Button>
+                <SearchButton variant={"outline-primary"}>Szukaj</SearchButton>
               </InputGroup.Append>
             </InputGroup>
           </Form>
+
           <Navbar.Text>Użytkownik:</Navbar.Text>
-          <Image
+          <ProfileImage
             onClick={() => this.switchModal(true)}
-            id={"profileImage"}
             src={"/profile_placeholder612x612.jpg"}
             rounded
           />
         </Navbar>
+
         <ProfileModal
           show={this.state.profileModalVisible}
           handleClose={() => this.switchModal(false)}

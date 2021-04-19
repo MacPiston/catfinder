@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Image } from "react-bootstrap";
+import { Image, Button } from "react-bootstrap";
 
 export const ImagesContainer = styled.div`
   display: flex;
@@ -24,4 +24,14 @@ export const TitleText = styled.h4`
 
 export const SecondaryText = styled.h5`
   margin-left: 6px;
+`;
+
+export const PrimaryButton = styled(Button)`
+  background-color: darkorange;
+  border-color: darkorange;
+  &:hover {
+    background-color: white;
+    color: darkorange;
+    border-color: darkorange;
+  }
 `;

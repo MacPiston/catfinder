@@ -6,6 +6,7 @@ import {
   TitleText,
   SecondaryText,
   UpImage,
+  PrimaryButton,
 } from "./NewPost.Components";
 
 class NewPost extends React.Component {
@@ -70,7 +71,7 @@ class NewPost extends React.Component {
           </ImagesContainer>
         </Modal.Body>
         <Modal.Footer>
-          <Button>Dodaj</Button>
+          <PrimaryButton>Dodaj ogłoszenie</PrimaryButton>
         </Modal.Footer>
       </Modal>
     );
