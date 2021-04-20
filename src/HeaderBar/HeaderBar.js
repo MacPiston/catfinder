@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Navbar,
-  Nav,
-  Form,
-  Button,
-  Image,
-  InputGroup,
-  FormControl,
-  Modal,
-} from "react-bootstrap";
+import { Navbar, Nav, Form, InputGroup } from "react-bootstrap";
 
 import {
   CatfinderText,
@@ -18,24 +8,7 @@ import {
   SearchButton,
   SearchForm,
 } from "./HeaderBar.Components";
-
-const ProfileModal = (props) => {
-  return (
-    <Modal show={props.show} onHide={props.handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Twoje konto</Modal.Title>
-      </Modal.Header>
-      <Button
-        style={{ width: "60%", alignSelf: "center" }}
-        onClick={props.handleClose}
-        variant="primary"
-      >
-        Zamknij
-      </Button>
-    </Modal>
-  );
-};
-
+import ProfileModal from "./ProfileModal";
 class HeaderBar extends React.Component {
   constructor(props) {
     super(props);
@@ -84,7 +57,7 @@ class HeaderBar extends React.Component {
             </Nav>
           </Navbar.Collapse>
 
-          <Form inline id={"searchForm"}>
+          <Form inline id={"searchForm"} style={{ marginRight: "6px" }}>
             <InputGroup className={"mr-lg-1"}>
               <SearchForm placeholder="Szukaj..." />
               <InputGroup.Append>
