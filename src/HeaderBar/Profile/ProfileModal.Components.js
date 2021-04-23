@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Image, Button } from "react-bootstrap";
 import { GoChevronRight } from "react-icons/go";
 
-export const PostsContainer = styled.div`
+export const Container = styled.div`
   margin-top: 6px;
   margin-bottom: 6px;
   padding-left: 4px;
@@ -65,6 +65,6 @@ export const TitleText = styled.h3`
   align-self: center;
 `;
 
-export const DescriptionText = styled.h4`
+export const DescriptionText = styled.h5`
   margin-left: 4px;
 `;

@@ -8,7 +8,7 @@ import {
   SearchButton,
   SearchForm,
 } from "./HeaderBar.Components";
-import ProfileModal from "./ProfileModal";
+import ProfileModal from "./Profile/ProfileModal";
 class HeaderBar extends React.Component {
   constructor(props) {
     super(props);
