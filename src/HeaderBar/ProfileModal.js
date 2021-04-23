@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Modal, Button, Tabs, Tab, ListGroup } from "react-bootstrap";
-import { GoChevronRight } from "react-icons/go";
+import { Modal, Tabs, Tab, ListGroup } from "react-bootstrap";
 
 import {
   PostsContainer,
@@ -11,33 +10,30 @@ import {
   NormalButton,
   EndButton,
   TitleText,
+  RightArrow,
+  DescriptionText,
+  HorizontalContainer,
 } from "./ProfileModal.Components";
 
 const PostComponent = (props) => {
+  const { views, messages } = props;
+
   return (
     <ListGroup.Item style={{ borderRadius: "4px", paddingRight: "0px" }}>
       <PostContainer>
-        <PostImage src="/cat_placeholder900x900.jpg" />
+        <PostImage height="150" width="150" src="/cat_placeholder900x900.jpg" />
         <StatsContainer>
           <TitleText>Nazwa ogłoszenia</TitleText>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-            }}
-          >
+          <HorizontalContainer>
+            <DescriptionText>Wyświetlenia: {views}</DescriptionText>
+            <DescriptionText>Wiadomości: {messages}</DescriptionText>
+          </HorizontalContainer>
+          <HorizontalContainer>
             <NormalButton>Odśwież</NormalButton>
             <EndButton variant="outline-danger">Zakończ</EndButton>
-          </div>
+          </HorizontalContainer>
         </StatsContainer>
-        <GoChevronRight
-          style={{
-            flex: 1,
-            alignSelf: "center",
-            height: "36px",
-            color: "darkorange",
-          }}
-        />
+        <RightArrow />
       </PostContainer>
     </ListGroup.Item>
   );
@@ -64,7 +60,7 @@ class ProfileModal extends React.Component {
           >
             <Tab eventKey="posts" title="Twoje ogłoszenia">
               <PostsContainer>
-                <PostComponent />
+                <PostComponent views="34" messages="0" />
               </PostsContainer>
             </Tab>
             <Tab eventKey="settings" title="Preferencje">

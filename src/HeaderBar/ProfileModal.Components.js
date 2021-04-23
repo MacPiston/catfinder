@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { Image, Button } from "react-bootstrap";
+import { GoChevronRight } from "react-icons/go";
 
 export const PostsContainer = styled.div`
   margin-top: 6px;
@@ -18,7 +19,6 @@ export const PostContainer = styled.div`
 
 export const PostImage = styled(Image)`
   flex: 3;
-  width: 100%;
   aspect-ratio: 1;
   border-radius: 4px;
 `;
@@ -33,6 +33,18 @@ export const StatsContainer = styled.div`
   justify-content: space-between;
   align-content: center;
   background-color: lightgrey;
+`;
+
+export const HorizontalContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+export const RightArrow = styled(GoChevronRight)`
+  flex: 1;
+  align-self: center;
+  height: 36px;
+  color: darkorange;
 `;
 
 export const NormalButton = styled(Button)`
@@ -51,4 +63,8 @@ export const EndButton = styled(Button)``;
 export const TitleText = styled.h3`
   font-weight: 600;
   align-self: center;
+`;
+
+export const DescriptionText = styled.h4`
+  margin-left: 4px;
 `;
