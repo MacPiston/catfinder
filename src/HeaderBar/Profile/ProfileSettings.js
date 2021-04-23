@@ -36,10 +36,12 @@ class ProfileSettings extends React.Component {
             placeholder="Powtórz nowe hasło"
           />
         </OptionContainerH>
+
         <TipText>
           Zaznacz tylko te informacje które mają zostać zaktualizowane, a
           następnie naciśnij "Zaktualizuj"
         </TipText>
+
         <NormalButton>Zaktualizuj</NormalButton>
       </OptionContainerV>
     );

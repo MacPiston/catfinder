@@ -14,10 +14,15 @@ class ProfileModal extends React.Component {
     this.state = { currentTab: "posts" };
   }
 
+  hideModal = () => {
+    this.setState({ currentTab: "posts" });
+    this.props.handleClose();
+  };
+
   render() {
-    const { show, handleClose } = this.props;
+    const { show } = this.props;
     return (
-      <Modal show={show} onHide={handleClose} size="lg" centered>
+      <Modal show={show} onHide={this.hideModal} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title>Twoje konto</Modal.Title>
         </Modal.Header>
@@ -41,7 +46,7 @@ class ProfileModal extends React.Component {
         </Modal.Body>
 
         <Modal.Footer>
-          <NormalButton onClick={handleClose} variant="primary">
+          <NormalButton onClick={this.hideModal} variant="primary">
             Zamknij
           </NormalButton>
         </Modal.Footer>
