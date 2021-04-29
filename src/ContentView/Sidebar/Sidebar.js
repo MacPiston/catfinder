@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Form, Button } from "react-bootstrap";
-import "./Sidebar.css";
+import React, { Component } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import './Sidebar.css';
 import {
   StyledSidebar,
   StandardText,
@@ -8,30 +8,28 @@ import {
   HeaderContainer,
   InputContainer,
   CheckboxContainer,
-  StyledCheckbox,
-} from "./Sidebar.Components";
-import { ThemeProvider } from "styled-components";
+} from './Sidebar.Components';
 
 class Sidebar extends Component {
   sortTypes = [
-    "Najnowsze",
-    "Najstarsze",
-    "Najpopularniejsze",
-    "Najmniej popularne",
+    'Najnowsze',
+    'Najstarsze',
+    'Najpopularniejsze',
+    'Najmniej popularne',
   ];
-  sorts = this.sortTypes.map((type) => {
-    return <option>{type}</option>;
-  });
+
+  sorts = this.sortTypes.map(type => <option>{type}</option>);
 
   checkboxTypes = {
-    all: "Wszystkie",
-    cats: "Koty",
-    dogs: "Psy",
-    others: "Pozostałe",
+    all: 'Wszystkie',
+    cats: 'Koty',
+    dogs: 'Psy',
+    others: 'Pozostałe',
   };
+
   checks = () => {
-    var temp = "";
-    for (let key in this.checkboxTypes) {
+    let temp = '';
+    for (const key in this.checkboxTypes) {
       temp += (
         <Form.Check type="checkbox" id={key} label={this.checkboxTypes[key]} />
       );
@@ -39,7 +37,7 @@ class Sidebar extends Component {
     return temp;
   };
 
-  onFilterSubmit = (e) => {
+  onFilterSubmit = e => {
     e.preventDefault();
   };
 
@@ -54,24 +52,24 @@ class Sidebar extends Component {
           <InputContainer>
             <StandardText>Miejscowość</StandardText>
             <Form.Control
-              className={"formInput"}
-              id={"formInput.city"}
-              type={"text"}
-              placeholder={"Miejscowość..."}
+              className="formInput"
+              id="formInput.city"
+              type="text"
+              placeholder="Miejscowość..."
             />
           </InputContainer>
 
           <InputContainer>
             <StandardText>Województwo</StandardText>
             <Form.Control
-              className={"formInput"}
-              id={"formInput.state"}
-              type={"text"}
-              placeholder={"Województwo..."}
+              className="formInput"
+              id="formInput.state"
+              type="text"
+              placeholder="Województwo..."
             />
           </InputContainer>
 
-          <HeaderContainer style={{ marginTop: "15px" }}>
+          <HeaderContainer style={{ marginTop: '15px' }}>
             <BoldText>Rodzaj</BoldText>
           </HeaderContainer>
 
@@ -93,11 +91,7 @@ class Sidebar extends Component {
             </Form.Control>
           </InputContainer>
 
-          <Button
-            id={"formSubmitButton"}
-            variant={"outline-primary"}
-            type={"submit"}
-          >
+          <Button id="formSubmitButton" variant="outline-primary" type="submit">
             Filtruj
           </Button>
         </Form>

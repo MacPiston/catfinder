@@ -1,11 +1,10 @@
-import React from "react";
-import { Row, Col, Image, Media, Container, Button } from "react-bootstrap";
+import React from 'react';
 import {
   MiniatureImage,
   InfoButton,
   PostContainer,
-} from "./PostComponent.Components";
-import PostInfoModal from "./PostInfoModal";
+} from './PostComponent.Components';
+import PostInfoModal from './PostInfoModal';
 
 class PostComponent extends React.Component {
   constructor(props) {
@@ -24,25 +23,24 @@ class PostComponent extends React.Component {
   };
 
   render() {
+    const { description } = this.props;
+    const { modalVisible } = this.state;
     return (
       <PostContainer>
         <MiniatureImage
-          className={"miniatureImage"}
-          src={"/cat_placeholder900x900.jpg"}
+          className="miniatureImage"
+          src="/cat_placeholder900x900.jpg"
           thumbnail
         />
-        {this.props.description}
+        {description}
         <InfoButton
-          className={"infoButton"}
-          variant={"outline-primary"}
+          className="infoButton"
+          variant="outline-primary"
           onClick={this.showModal}
         >
           Informacje
         </InfoButton>
-        <PostInfoModal
-          modalVisible={this.state.modalVisible}
-          onHide={this.hideModal}
-        />
+        <PostInfoModal modalVisible={modalVisible} onHide={this.hideModal} />
       </PostContainer>
     );
   }

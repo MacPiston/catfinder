@@ -1,5 +1,5 @@
-import React from "react";
-import { Modal, Button, Form, Col } from "react-bootstrap";
+import React from 'react';
+import { Modal, Form, Col } from 'react-bootstrap';
 import {
   ImagesContainer,
   ImageUploadContainer,
@@ -7,17 +7,13 @@ import {
   SecondaryText,
   UpImage,
   PrimaryButton,
-} from "./NewPost.Components";
+} from './NewPost.Components';
 
-class NewPost extends React.Component {
+class NewPost extends React.PureComponent {
   render() {
+    const { visible, hideHandler } = this.props;
     return (
-      <Modal
-        size={"lg"}
-        centered
-        show={this.props.visible}
-        onHide={this.props.hideHandler}
-      >
+      <Modal size="lg" centered show={visible} onHide={hideHandler}>
         <Modal.Header closeButton>
           <Modal.Title>Nowe ogłoszenie</Modal.Title>
         </Modal.Header>
@@ -43,15 +39,15 @@ class NewPost extends React.Component {
               <Form.Control as="textarea" rows={2} />
             </Form.Row>
           </Form>
-          <Form style={{ marginTop: "12px" }}>
+          <Form style={{ marginTop: '12px' }}>
             <SecondaryText>Typ</SecondaryText>
-            <Form.Row style={{ marginLeft: "8px" }}>
+            <Form.Row style={{ marginLeft: '8px' }}>
               <Form.Check inline label="Kot" type="radio" />
               <Form.Check inline label="Pies" type="radio" />
               <Form.Check inline label="Inny" type="radio" />
             </Form.Row>
           </Form>
-          <TitleText style={{ marginTop: "12px" }}>Zdjęcia</TitleText>
+          <TitleText style={{ marginTop: '12px' }}>Zdjęcia</TitleText>
           <ImagesContainer>
             <ImageUploadContainer>
               <SecondaryText>Zdjęcie 1</SecondaryText>

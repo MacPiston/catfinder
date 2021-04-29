@@ -1,5 +1,5 @@
-import { Button, Image, Navbar, Form } from "react-bootstrap";
-import styled from "styled-components";
+import { Button, Image, Navbar, Form } from 'react-bootstrap';
+import styled from 'styled-components';
 
 export const CatfinderText = styled(Navbar.Brand)`
   font-weight: bold;
@@ -34,5 +34,5 @@ export const SearchButton = styled(Button)`
 `;
 
 export const SearchForm = styled(Form.Control)`
-  margin-: 22px;
+  margin-left: 22px;
 `;

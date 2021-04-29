@@ -1,5 +1,5 @@
-import React from "react";
-import { Form } from "react-bootstrap";
+import React from 'react';
+import { Form } from 'react-bootstrap';
 
 import {
   OptionContainerV,
@@ -8,30 +8,30 @@ import {
   OptionContainerH,
   TipText,
   NormalButton,
-} from "./ProfileSettings.Components";
+} from './ProfileSettings.Components';
 
-class ProfileSettings extends React.Component {
+class ProfileSettings extends React.PureComponent {
   render() {
     return (
       <OptionContainerV>
-        <OptionContainerH style={{ marginTop: "6px" }}>
+        <OptionContainerH style={{ marginTop: '6px' }}>
           <Form.Check type="checkbox" label="" />
           <OptionText>Adres email</OptionText>
         </OptionContainerH>
         <Input type="email" placeholder="Nowy adres email" />
 
-        <OptionContainerH style={{ marginTop: "6px" }}>
+        <OptionContainerH style={{ marginTop: '6px' }}>
           <Form.Check type="checkbox" label="" />
           <OptionText>Hasło</OptionText>
         </OptionContainerH>
         <OptionContainerH>
           <Input
-            style={{ marginRight: "2px" }}
+            style={{ marginRight: '2px' }}
             type="password"
             placeholder="Nowe hasło"
           />
           <Input
-            style={{ marginLeft: "2px" }}
+            style={{ marginLeft: '2px' }}
             type="password"
             placeholder="Powtórz nowe hasło"
           />
@@ -39,7 +39,7 @@ class ProfileSettings extends React.Component {
 
         <TipText>
           Zaznacz tylko te informacje które mają zostać zaktualizowane, a
-          następnie naciśnij "Zaktualizuj"
+          następnie naciśnij &quot;Zaktualizuj&quot;
         </TipText>
 
         <NormalButton>Zaktualizuj</NormalButton>

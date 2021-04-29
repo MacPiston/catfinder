@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Sidebar from "./Sidebar/Sidebar";
-import ContentView from "./ContentView";
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import Sidebar from './Sidebar/Sidebar';
+import ContentView from './ContentView';
 
-class ContentViewContainer extends Component {
+class ContentViewContainer extends React.PureComponent {
   render() {
     return (
       <Container fluid>
         <Row>
-          <Col md={"2"}>
+          <Col md="2">
             <Sidebar />
           </Col>
           <Col>

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Image, Button } from "react-bootstrap";
+import styled from 'styled-components';
+import { Image, Button } from 'react-bootstrap';
 
 export const PostContainer = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Image, Button } from "react-bootstrap";
-import { GoChevronRight } from "react-icons/go";
+import { Image, Button } from 'react-bootstrap';
+import { GoChevronRight } from 'react-icons/go';
 
 export const Container = styled.div`
   margin-top: 6px;

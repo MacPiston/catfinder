@@ -1,5 +1,5 @@
-import React from "react";
-import { Navbar, Nav, Form, InputGroup } from "react-bootstrap";
+import React from 'react';
+import { Navbar, Nav, Form, InputGroup } from 'react-bootstrap';
 
 import {
   CatfinderText,
@@ -7,8 +7,10 @@ import {
   NewPostButton,
   SearchButton,
   SearchForm,
-} from "./HeaderBar.Components";
-import ProfileModal from "./Profile/ProfileModal";
+} from './HeaderBar.Components';
+
+import ProfileModal from './Profile/ProfileModal';
+
 class HeaderBar extends React.Component {
   constructor(props) {
     super(props);
@@ -18,50 +20,47 @@ class HeaderBar extends React.Component {
     };
   }
 
-  switchModal = (value) => {
+  switchModal = value => {
     this.setState({
       profileModalVisible: value,
     });
   };
 
   render() {
-    const { activeTabs } = this.state;
-
+    const { activeTabs, profileModalVisible } = this.state;
+    const { newPostButtonHandler } = this.props;
     return (
-      <div id={"navbarContainer"}>
-        <Navbar className={"navbarOrange"} bg={"light"} expand={"lg"}>
+      <div id="navbarContainer">
+        <Navbar className="navbarOrange" bg="light" expand="lg">
           <CatfinderText>CatFinder</CatfinderText>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
           <Navbar.Collapse>
-            <Nav className={"mr-lg-1"}>
-              <Nav.Link id={"headerLink"} active={activeTabs["home"]}>
+            <Nav className="mr-lg-1">
+              <Nav.Link id="headerLink" active={activeTabs.home}>
                 Strona główna
               </Nav.Link>
-              <Nav.Link id={"headerLink"} active={activeTabs["cats"]}>
+              <Nav.Link id="headerLink" active={activeTabs.cats}>
                 Koty
               </Nav.Link>
-              <Nav.Link id={"headerLink"} active={activeTabs["dogs"]}>
+              <Nav.Link id="headerLink" active={activeTabs.dogs}>
                 Psy
               </Nav.Link>
-              <Nav.Link id={"headerLink"} active={activeTabs["others"]}>
+              <Nav.Link id="headerLink" active={activeTabs.others}>
                 Pozostałe
               </Nav.Link>
-              <NewPostButton
-                variant={"primary"}
-                onClick={this.props.newPostButtonHandler}
-              >
+              <NewPostButton variant="primary" onClick={newPostButtonHandler}>
                 Dodaj ogłoszenie
               </NewPostButton>
             </Nav>
           </Navbar.Collapse>
 
-          <Form inline id={"searchForm"} style={{ marginRight: "6px" }}>
-            <InputGroup className={"mr-lg-1"}>
+          <Form inline id="searchForm" style={{ marginRight: '6px' }}>
+            <InputGroup className="mr-lg-1">
               <SearchForm placeholder="Szukaj..." />
               <InputGroup.Append>
-                <SearchButton variant={"outline-primary"}>Szukaj</SearchButton>
+                <SearchButton variant="outline-primary">Szukaj</SearchButton>
               </InputGroup.Append>
             </InputGroup>
           </Form>
@@ -69,13 +68,13 @@ class HeaderBar extends React.Component {
           <Navbar.Text>Użytkownik:</Navbar.Text>
           <ProfileImage
             onClick={() => this.switchModal(true)}
-            src={"/profile_placeholder612x612.jpg"}
+            src="/profile_placeholder612x612.jpg"
             rounded
           />
         </Navbar>
 
         <ProfileModal
-          show={this.state.profileModalVisible}
+          show={profileModalVisible}
           handleClose={() => this.switchModal(false)}
         />
       </div>

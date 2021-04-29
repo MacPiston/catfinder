@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Modal, Image, Carousel, Button } from "react-bootstrap";
+import styled from 'styled-components';
+import { Modal, Image, Carousel, Button } from 'react-bootstrap';
 
 export const BodyContainer = styled(Modal.Body)`
   display: flex;

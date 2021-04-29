@@ -1,26 +1,28 @@
-import React from "react";
+import React from 'react';
 
-import { Modal, Tabs, Tab } from "react-bootstrap";
+import { Modal, Tabs, Tab } from 'react-bootstrap';
 
-import { Container, NormalButton } from "./ProfileModal.Components";
+import { Container, NormalButton } from './ProfileModal.Components';
 
-import PostComponent from "./PostComponent";
+import PostComponent from './PostComponent';
 
-import ProfileSettings from "./ProfileSettings";
+import ProfileSettings from './ProfileSettings';
 
 class ProfileModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentTab: "posts" };
+    this.state = { currentTab: 'posts' };
   }
 
   hideModal = () => {
-    this.setState({ currentTab: "posts" });
-    this.props.handleClose();
+    const { handleClose } = this.props;
+    this.setState({ currentTab: 'posts' });
+    handleClose();
   };
 
   render() {
     const { show } = this.props;
+    const { currentTab } = this.state;
     return (
       <Modal show={show} onHide={this.hideModal} size="lg" centered>
         <Modal.Header closeButton>
@@ -29,8 +31,8 @@ class ProfileModal extends React.Component {
 
         <Modal.Body>
           <Tabs
-            activeKey={this.state.currentTab}
-            onSelect={(tab) => this.setState({ currentTab: tab })}
+            activeKey={currentTab}
+            onSelect={tab => this.setState({ currentTab: tab })}
           >
             <Tab eventKey="posts" title="Twoje ogłoszenia">
               <Container>

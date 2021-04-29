@@ -1,4 +1,5 @@
-import { ListGroup } from "react-bootstrap";
+import React from 'react';
+import { ListGroup } from 'react-bootstrap';
 
 import {
   PostContainer,
@@ -10,13 +11,13 @@ import {
   RightArrow,
   DescriptionText,
   HorizontalContainer,
-} from "./ProfileModal.Components";
+} from './ProfileModal.Components';
 
-const PostComponent = (props) => {
+const PostComponent = props => {
   const { views, messages, title } = props;
 
   return (
-    <ListGroup.Item style={{ borderRadius: "4px", paddingRight: "0px" }}>
+    <ListGroup.Item style={{ borderRadius: '4px', paddingRight: '0px' }}>
       <PostContainer>
         <PostImage height="150" width="150" src="/cat_placeholder900x900.jpg" />
         <StatsContainer>
