@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import './Sidebar.css';
+import { Form } from 'react-bootstrap';
 import {
   StyledSidebar,
   StandardText,
   BoldText,
   HeaderContainer,
   InputContainer,
-  CheckboxContainer,
+  FilterButton,
 } from './Sidebar.Components';
 
 class Sidebar extends Component {
@@ -20,22 +19,9 @@ class Sidebar extends Component {
 
   sorts = this.sortTypes.map(type => <option>{type}</option>);
 
-  checkboxTypes = {
-    all: 'Wszystkie',
-    cats: 'Koty',
-    dogs: 'Psy',
-    others: 'Pozostałe',
-  };
+  colorTypes = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'];
 
-  checks = () => {
-    let temp = '';
-    for (const key in this.checkboxTypes) {
-      temp += (
-        <Form.Check type="checkbox" id={key} label={this.checkboxTypes[key]} />
-      );
-    }
-    return temp;
-  };
+  colors = this.colorTypes.map(type => <option>{type}</option>);
 
   onFilterSubmit = e => {
     e.preventDefault();
@@ -43,8 +29,8 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <StyledSidebar>
-        <Form onSubmit={this.onFilterSubmit}>
+      <Form onSubmit={this.onFilterSubmit}>
+        <StyledSidebar>
           <HeaderContainer>
             <BoldText>Lokalizacja</BoldText>
           </HeaderContainer>
@@ -70,32 +56,28 @@ class Sidebar extends Component {
           </InputContainer>
 
           <HeaderContainer style={{ marginTop: '15px' }}>
-            <BoldText>Rodzaj</BoldText>
+            <BoldText>Kolor</BoldText>
           </HeaderContainer>
-
-          <CheckboxContainer>
-            {/* <Form.Check type={"checkbox"} id={"all"} label={"Wszystkie"} />
-            <Form.Check type={"checkbox"} id={"cats"} label={"Koty"} />
-            <Form.Check type={"checkbox"} id={"dogs"} label={"Psy"} />
-            <Form.Check type={"checkbox"} id={"others"} label={"Pozostałe"} /> */}
-            {this.checks()}
-          </CheckboxContainer>
+          <InputContainer>
+            <Form.Control as="select" id="formInput.color">
+              {this.colors}
+            </Form.Control>
+          </InputContainer>
 
           <HeaderContainer>
             <BoldText>Sortuj</BoldText>
           </HeaderContainer>
-
           <InputContainer>
             <Form.Control as="select" id="formInput.sort">
               {this.sorts}
             </Form.Control>
           </InputContainer>
 
-          <Button id="formSubmitButton" variant="outline-primary" type="submit">
+          <FilterButton variant="primary-outline" type="submit">
             Filtruj
-          </Button>
-        </Form>
-      </StyledSidebar>
+          </FilterButton>
+        </StyledSidebar>
+      </Form>
     );
   }
 }

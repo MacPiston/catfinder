@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 export const StyledSidebar = styled.div`
   width: 100%;
@@ -48,3 +48,19 @@ export const CheckboxContainer = styled.div`
 export const StyledTextInput = styled.input``;
 
 export const StyledCheckbox = styled(Form.Check)``;
+
+export const FilterButton = styled(Button)`
+  margin-top: 4px;
+  width: 75%;
+  align-self: center;
+  color: white;
+  border-color: white;
+
+  &:hover {
+    color: darkorange;
+    background-color: white;
+  }
+  &:active {
+    color: white;
+  }
+`;
