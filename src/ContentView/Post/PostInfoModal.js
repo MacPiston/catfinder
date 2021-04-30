@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Carousel } from 'react-bootstrap';
 import {
   BodyContainer,
@@ -23,8 +23,10 @@ function NumberComponent(props) {
   );
 }
 
-class PostInfoModal extends React.Component {
-  postInfo = {
+const PostInfoModal = props => {
+  const [numberVisible, setNumberVisible] = useState(false);
+
+  const postInfo = {
     title: '???',
     name: 'none',
     location: 'none',
@@ -34,71 +36,58 @@ class PostInfoModal extends React.Component {
     description: 'none',
   };
 
-  InfoPanelContents = (
+  const InfoPanelContents = (
     <>
       <TitleText>Imię:</TitleText>
-      <SecondaryText>{this.postInfo.name}</SecondaryText>
+      <SecondaryText>{postInfo.name}</SecondaryText>
 
       <TitleText style={{ marginTop: '10px' }}>Lokalizacja:</TitleText>
       <SecondaryText style={{ marginBottom: '10px' }}>
-        {this.postInfo.location}
+        {postInfo.location}
       </SecondaryText>
 
       <TitleText style={{ marginTop: '10px' }}>Data dodania:</TitleText>
       <SecondaryText style={{ marginBottom: '10px' }}>
-        {this.postInfo.date}
+        {postInfo.date}
       </SecondaryText>
 
       <TitleText>Dodał:</TitleText>
-      <SecondaryText>{this.postInfo.whoAdded}</SecondaryText>
+      <SecondaryText>{postInfo.whoAdded}</SecondaryText>
     </>
   );
 
-  constructor(props) {
-    super(props);
-    this.state = { numberVisible: false };
-  }
-
-  showNumber = () => {
-    this.setState({ numberVisible: true });
-  };
-
-  carouselItems = () => (
+  const carouselItems = () => (
     <Carousel.Item>
       <ImageContainer src="/cat_placeholder900x900.jpg" alt="Post image" />
     </Carousel.Item>
   );
 
-  render() {
-    const { modalVisible, onHide } = this.props;
-    const { numberVisible } = this.state;
-    return (
-      <Modal show={modalVisible} onHide={onHide} centered size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>{this.postInfo.title}</Modal.Title>
-        </Modal.Header>
-        <BodyContainer>
-          <UpperBodyContainer>
-            <StyledCarousel>{this.carouselItems()}</StyledCarousel>
-            <InfoPanel>{this.InfoPanelContents}</InfoPanel>
-          </UpperBodyContainer>
-          <LowerBodyContainer>
-            <TitleText>Informacje:</TitleText>
-            <DescriptionContainer>
-              {this.postInfo.description}
-            </DescriptionContainer>
-          </LowerBodyContainer>
-        </BodyContainer>
-        <Modal.Footer>
-          <PrimaryButton>Wyślij wiadomość</PrimaryButton>
-          <SecondaryButton onClick={this.showNumber}>
-            Wyświetl nr. telefonu
-          </SecondaryButton>
-          {numberVisible && <NumberComponent number={this.postInfo.number} />}
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-}
+  const { modalVisible, onHide } = props;
+
+  return (
+    <Modal show={modalVisible} onHide={onHide} centered size="lg">
+      <Modal.Header closeButton>
+        <Modal.Title>{postInfo.title}</Modal.Title>
+      </Modal.Header>
+      <BodyContainer>
+        <UpperBodyContainer>
+          <StyledCarousel>{carouselItems()}</StyledCarousel>
+          <InfoPanel>{InfoPanelContents}</InfoPanel>
+        </UpperBodyContainer>
+        <LowerBodyContainer>
+          <TitleText>Informacje:</TitleText>
+          <DescriptionContainer>{postInfo.description}</DescriptionContainer>
+        </LowerBodyContainer>
+      </BodyContainer>
+      <Modal.Footer>
+        <PrimaryButton>Wyślij wiadomość</PrimaryButton>
+        <SecondaryButton onClick={() => setNumberVisible(true)}>
+          Wyświetl nr. telefonu
+        </SecondaryButton>
+        {numberVisible && <NumberComponent number={postInfo.number} />}
+      </Modal.Footer>
+    </Modal>
+  );
+};
 
 export default PostInfoModal;

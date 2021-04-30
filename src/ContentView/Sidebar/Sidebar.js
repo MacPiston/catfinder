@@ -9,77 +9,86 @@ import {
   FilterButton,
 } from './Sidebar.Components';
 
-class Sidebar extends Component {
-  sortTypes = [
+const Sidebar = () => {
+  const sortTypes = [
     'Najnowsze',
     'Najstarsze',
     'Najpopularniejsze',
     'Najmniej popularne',
   ];
 
-  sorts = this.sortTypes.map(type => <option>{type}</option>);
+  const sorts = sortTypes.map(type => <option>{type}</option>);
 
-  colorTypes = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'];
+  const colorTypes = [
+    'c1',
+    'c2',
+    'c3',
+    'c4',
+    'c5',
+    'c6',
+    'c7',
+    'c8',
+    'c9',
+    'c10',
+  ];
 
-  colors = this.colorTypes.map(type => <option>{type}</option>);
+  const colors = colorTypes.map(type => <option>{type}</option>);
 
-  onFilterSubmit = e => {
+  const onFilterSubmit = e => {
     e.preventDefault();
   };
 
-  render() {
-    return (
-      <Form onSubmit={this.onFilterSubmit}>
-        <StyledSidebar>
-          <HeaderContainer>
-            <BoldText>Lokalizacja</BoldText>
-          </HeaderContainer>
+  return (
+    <Form onSubmit={onFilterSubmit}>
+      <StyledSidebar>
+        <HeaderContainer>
+          <BoldText>Lokalizacja</BoldText>
+        </HeaderContainer>
 
-          <InputContainer>
-            <StandardText>Miejscowość</StandardText>
-            <Form.Control
-              className="formInput"
-              id="formInput.city"
-              type="text"
-              placeholder="Miejscowość..."
-            />
-          </InputContainer>
+        <InputContainer>
+          <StandardText>Miejscowość</StandardText>
+          <Form.Control
+            className="formInput"
+            id="formInput.city"
+            type="text"
+            placeholder="Miejscowość..."
+          />
+        </InputContainer>
 
-          <InputContainer>
-            <StandardText>Województwo</StandardText>
-            <Form.Control
-              className="formInput"
-              id="formInput.state"
-              type="text"
-              placeholder="Województwo..."
-            />
-          </InputContainer>
+        <InputContainer>
+          <StandardText>Województwo</StandardText>
+          <Form.Control
+            className="formInput"
+            id="formInput.state"
+            type="text"
+            placeholder="Województwo..."
+          />
+        </InputContainer>
 
-          <HeaderContainer style={{ marginTop: '15px' }}>
-            <BoldText>Kolor</BoldText>
-          </HeaderContainer>
-          <InputContainer>
-            <Form.Control as="select" id="formInput.color">
-              {this.colors}
-            </Form.Control>
-          </InputContainer>
+        <HeaderContainer style={{ marginTop: '15px' }}>
+          <BoldText>Kolor</BoldText>
+        </HeaderContainer>
+        <InputContainer>
+          <Form.Control as="select" id="formInput.color">
+            {colors}
+          </Form.Control>
+        </InputContainer>
 
-          <HeaderContainer>
-            <BoldText>Sortuj</BoldText>
-          </HeaderContainer>
-          <InputContainer>
-            <Form.Control as="select" id="formInput.sort">
-              {this.sorts}
-            </Form.Control>
-          </InputContainer>
+        <HeaderContainer>
+          <BoldText>Sortuj</BoldText>
+        </HeaderContainer>
+        <InputContainer>
+          <Form.Control as="select" id="formInput.sort">
+            {sorts}
+          </Form.Control>
+        </InputContainer>
 
-          <FilterButton variant="primary-outline" type="submit">
-            Filtruj
-          </FilterButton>
-        </StyledSidebar>
-      </Form>
-    );
-  }
-}
+        <FilterButton variant="primary-outline" type="submit">
+          Filtruj
+        </FilterButton>
+      </StyledSidebar>
+    </Form>
+  );
+};
 
 export default Sidebar;
