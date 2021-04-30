@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Sidebar from './Sidebar/Sidebar';
 import ContentView from './ContentView';
 
-const ContentViewContainer = () => {
+const ContentViewContainer = () => (
   <Container fluid>
     <Row>
       <Col md="2">
@@ -13,7 +13,7 @@ const ContentViewContainer = () => {
         <ContentView />
       </Col>
     </Row>
-  </Container>;
-};
+  </Container>
+);
 
 export default ContentViewContainer;

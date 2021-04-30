@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "name": "Galutek",
+      "date": "24.04",
+      "location": "Gliwice",
+      "whoAdded": "Maciej",
+      "number": "666666666",
+      "description": "Randomowy opis kota który spierdolił"
+    },
+    {
+      "name": "Biszkopt",
+      "date": "13.02",
+      "location": "Katowice",
+      "whoAdded": "Agnieszka",
+      "number": "555555555",
+      "description": "Randomowy opis psa który spierdolił"
+    }
+  ]
+}

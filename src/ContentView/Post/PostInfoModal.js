@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import React, { useState } from 'react';
 import { Modal, Carousel } from 'react-bootstrap';
 import {
@@ -23,7 +24,7 @@ function NumberComponent(props) {
   );
 }
 
-const PostInfoModal = props => {
+const PostInfoModal = ({ modalVisible, onHide }) => {
   const [numberVisible, setNumberVisible] = useState(false);
 
   const postInfo = {
@@ -61,8 +62,6 @@ const PostInfoModal = props => {
       <ImageContainer src="/cat_placeholder900x900.jpg" alt="Post image" />
     </Carousel.Item>
   );
-
-  const { modalVisible, onHide } = props;
 
   return (
     <Modal show={modalVisible} onHide={onHide} centered size="lg">

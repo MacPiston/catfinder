@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
-import './ContentView.css';
 import PostComponent from './Post/PostComponent';
+import PostContext from './PostContext';
 
 const PostContainer = styled.div`
   background: darkgrey;
@@ -10,23 +10,27 @@ const PostContainer = styled.div`
   padding: 5px;
 `;
 
-const ContentView = () => {
+const ContentView = () => (
   <PostContainer>
     <Row lg={4} sm={2} xs={1}>
       <Col>
-        <PostComponent description="KEKW" />
+        <PostContext.Provider
+          value={{ name: 'Test', location: 'tgliwice', date: '22.01' }}
+        >
+          <PostComponent />
+        </PostContext.Provider>
       </Col>
       <Col>
-        <PostComponent description="LMAO" />
+        <PostComponent info={{}} />
       </Col>
       <Col>
-        <PostComponent description="AYAYA" />
+        <PostComponent info={{}} />
       </Col>
       <Col>
-        <PostComponent description="SAGDE" />
+        <PostComponent info={{}} />
       </Col>
     </Row>
-  </PostContainer>;
-};
+  </PostContainer>
+);
 
 export default ContentView;
