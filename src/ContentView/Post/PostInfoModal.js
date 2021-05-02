@@ -1,6 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Modal, Carousel } from 'react-bootstrap';
+import PostContext from '../PostContext';
 import {
   BodyContainer,
   ImageContainer,
@@ -26,34 +27,23 @@ function NumberComponent(props) {
 
 const PostInfoModal = ({ modalVisible, onHide }) => {
   const [numberVisible, setNumberVisible] = useState(false);
-
-  const postInfo = {
-    title: '???',
-    name: 'none',
-    location: 'none',
-    number: '666666666',
-    date: 'none',
-    whoAdded: 'none',
-    description: 'none',
-  };
+  const { name, date, location, description, whoAdded, number } = useContext(
+    PostContext
+  );
 
   const InfoPanelContents = (
     <>
       <TitleText>Imię:</TitleText>
-      <SecondaryText>{postInfo.name}</SecondaryText>
+      <SecondaryText>{name}</SecondaryText>
 
       <TitleText style={{ marginTop: '10px' }}>Lokalizacja:</TitleText>
-      <SecondaryText style={{ marginBottom: '10px' }}>
-        {postInfo.location}
-      </SecondaryText>
+      <SecondaryText style={{ marginBottom: '10px' }}>{location}</SecondaryText>
 
       <TitleText style={{ marginTop: '10px' }}>Data dodania:</TitleText>
-      <SecondaryText style={{ marginBottom: '10px' }}>
-        {postInfo.date}
-      </SecondaryText>
+      <SecondaryText style={{ marginBottom: '10px' }}>{date}</SecondaryText>
 
       <TitleText>Dodał:</TitleText>
-      <SecondaryText>{postInfo.whoAdded}</SecondaryText>
+      <SecondaryText>{whoAdded}</SecondaryText>
     </>
   );
 
@@ -63,10 +53,15 @@ const PostInfoModal = ({ modalVisible, onHide }) => {
     </Carousel.Item>
   );
 
+  const handleHide = () => {
+    setNumberVisible(false);
+    onHide();
+  };
+
   return (
-    <Modal show={modalVisible} onHide={onHide} centered size="lg">
+    <Modal show={modalVisible} onHide={handleHide} centered size="lg">
       <Modal.Header closeButton>
-        <Modal.Title>{postInfo.title}</Modal.Title>
+        <Modal.Title>Title</Modal.Title>
       </Modal.Header>
       <BodyContainer>
         <UpperBodyContainer>
@@ -75,7 +70,7 @@ const PostInfoModal = ({ modalVisible, onHide }) => {
         </UpperBodyContainer>
         <LowerBodyContainer>
           <TitleText>Informacje:</TitleText>
-          <DescriptionContainer>{postInfo.description}</DescriptionContainer>
+          <DescriptionContainer>{description}</DescriptionContainer>
         </LowerBodyContainer>
       </BodyContainer>
       <Modal.Footer>
@@ -83,7 +78,7 @@ const PostInfoModal = ({ modalVisible, onHide }) => {
         <SecondaryButton onClick={() => setNumberVisible(true)}>
           Wyświetl nr. telefonu
         </SecondaryButton>
-        {numberVisible && <NumberComponent number={postInfo.number} />}
+        {numberVisible && <NumberComponent number={number} />}
       </Modal.Footer>
     </Modal>
   );
