@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Modal, Carousel } from 'react-bootstrap';
 import PostContext from '../PostContext';
 import {
@@ -47,10 +47,15 @@ const PostInfoModal = ({ modalVisible, onHide }) => {
     </>
   );
 
-  const carouselItems = () => (
-    <Carousel.Item>
-      <ImageContainer src="/cat_placeholder900x900.jpg" alt="Post image" />
-    </Carousel.Item>
+  const imageCarousel = () => (
+    <StyledCarousel>
+      <Carousel.Item>
+        <ImageContainer src="/cat_placeholder900x900.jpg" alt="Post image" />
+      </Carousel.Item>
+      <Carousel.Item>
+        <ImageContainer src="/cat_placeholder900x900.jpg" alt="Post image" />
+      </Carousel.Item>
+    </StyledCarousel>
   );
 
   const handleHide = () => {
@@ -65,7 +70,7 @@ const PostInfoModal = ({ modalVisible, onHide }) => {
       </Modal.Header>
       <BodyContainer>
         <UpperBodyContainer>
-          <StyledCarousel>{carouselItems()}</StyledCarousel>
+          {imageCarousel()}
           <InfoPanel>{InfoPanelContents}</InfoPanel>
         </UpperBodyContainer>
         <LowerBodyContainer>

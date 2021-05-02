@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import PostComponent from './Post/PostComponent';
 import PostContext from './PostContext';
 
-const PostContainer = styled.div`
+const PostsContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
   height: 100%;
-  background: darkgrey;
+  /* background: darkgrey; */
   border-radius: 4px;
   padding: 5px;
 `;
@@ -33,7 +33,7 @@ const ContentView = () => {
   }, []);
 
   return (
-    <PostContainer>
+    <PostsContainer>
       {posts.data.map(el => (
         <PostContext.Provider
           key={el.id}
@@ -50,7 +50,7 @@ const ContentView = () => {
           <PostComponent />
         </PostContext.Provider>
       ))}
-    </PostContainer>
+    </PostsContainer>
   );
 };
 

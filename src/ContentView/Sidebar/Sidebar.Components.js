@@ -9,6 +9,8 @@ export const StyledSidebar = styled.div`
   border-radius: 4px;
   padding: 8px;
   padding-top: 0px;
+  box-shadow: 3px 3px 10px grey;
+  margin: 8px;
 `;
 
 export const HeaderContainer = styled.div`

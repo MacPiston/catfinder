@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { Image, Button } from 'react-bootstrap';
 
 export const PostContainer = styled.div`
-  width: 33%;
+  flex-basis: 32%;
+  min-width: 380px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +13,8 @@ export const PostContainer = styled.div`
   padding-bottom: 0px;
   border-radius: 4px;
   border: 1px solid darkorange;
-  margin-bottom: 6px;
+  margin: 8px;
+  box-shadow: 3px 3px 10px grey;
 `;
 
 export const DescriptionLine = styled.div`

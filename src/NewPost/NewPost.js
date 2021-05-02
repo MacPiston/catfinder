@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { Modal, Form, Col } from 'react-bootstrap';
 import {
   ImagesContainer,
@@ -9,8 +9,36 @@ import {
   PrimaryButton,
 } from './NewPost.Components';
 
+const valuesReducer = (values, action) => {
+  const { name, value } = action.source;
+  switch (name) {
+    case 'name':
+      return { ...values, name: value };
+    case 'location':
+      return { ...values, location: value };
+    case 'date':
+      return { ...values, date: value };
+    case 'description':
+      return { ...values, description: value };
+    case 'type':
+      return { ...values, type: value };
+    default:
+      throw Error('Unhandled switch');
+  }
+};
+
+const initialValues = {
+  name: 'none',
+  location: 'none',
+  date: 'none',
+  whoAdded: 'none',
+  description: 'none',
+  type: 'none',
+};
+
 const NewPost = props => {
   const { show, handleClose } = props;
+  const [values, dispatch] = useReducer(valuesReducer, initialValues);
 
   return (
     <Modal size="lg" centered show={show} onHide={handleClose}>
@@ -19,38 +47,78 @@ const NewPost = props => {
       </Modal.Header>
       <Modal.Body>
         <TitleText>Informacje</TitleText>
-        <Form>
-          <Form.Row>
-            <Form.Group as={Col} controlId="">
-              <SecondaryText>Imię</SecondaryText>
-              <Form.Control type="text" placeholder="Imię" />
-            </Form.Group>
+        <Form.Row>
+          <Form.Group as={Col}>
+            <SecondaryText>Imię</SecondaryText>
+            <Form.Control
+              type="text"
+              name="name"
+              placeholder="Imię"
+              onChange={event => dispatch({ source: event.target })}
+            />
+          </Form.Group>
 
-            <Form.Group as={Col} controlId="">
-              <SecondaryText>Lokalizacja</SecondaryText>
-              <Form.Control type="text" placeholder="Lokalizacja" />
-            </Form.Group>
+          <Form.Group as={Col}>
+            <SecondaryText>Lokalizacja</SecondaryText>
+            <Form.Control
+              type="text"
+              name="location"
+              placeholder="Lokalizacja"
+              onChange={event => dispatch({ source: event.target })}
+            />
+          </Form.Group>
 
-            <Form.Group as={Col} controlId="">
-              <SecondaryText>Data zaginięcia</SecondaryText>
-              <Form.Control type="date" placeholder="Data zaginięcia" />
-            </Form.Group>
-          </Form.Row>
+          <Form.Group as={Col}>
+            <SecondaryText>Data zaginięcia</SecondaryText>
+            <Form.Control
+              type="date"
+              name="date"
+              placeholder="Data zaginięcia"
+              onChange={event => dispatch({ source: event.target })}
+            />
+          </Form.Group>
+        </Form.Row>
 
-          <Form.Row>
-            <SecondaryText>Opis</SecondaryText>
-            <Form.Control as="textarea" rows={2} />
-          </Form.Row>
-        </Form>
+        <SecondaryText style={{ marginTop: '8px' }}>Typ</SecondaryText>
+        <Form.Row style={{ marginLeft: '8px' }}>
+          <Form.Check
+            inline
+            label="Kot"
+            type="radio"
+            name="type"
+            value="cat"
+            onChange={event => dispatch({ source: event.target })}
+          />
+          <Form.Check
+            inline
+            label="Pies"
+            type="radio"
+            name="type"
+            value="dog"
+            onChange={event => dispatch({ source: event.target })}
+          />
+          <Form.Check
+            inline
+            label="Inny"
+            type="radio"
+            name="type"
+            value="other"
+            onChange={event => dispatch({ source: event.target })}
+          />
+        </Form.Row>
 
-        <Form style={{ marginTop: '12px' }}>
-          <SecondaryText>Typ</SecondaryText>
-          <Form.Row style={{ marginLeft: '8px' }}>
-            <Form.Check inline label="Kot" type="radio" />
-            <Form.Check inline label="Pies" type="radio" />
-            <Form.Check inline label="Inny" type="radio" />
-          </Form.Row>
-        </Form>
+        <SecondaryText style={{ marginTop: '8px' }}>
+          Cechy charakterystyczne
+        </SecondaryText>
+        <Form.Control type="text" name="tags" placeholder="Tagi..." />
+
+        <SecondaryText style={{ marginTop: '8px' }}>Opis</SecondaryText>
+        <Form.Control
+          as="textarea"
+          name="description"
+          rows={2}
+          onChange={event => dispatch({ source: event.target })}
+        />
 
         <TitleText style={{ marginTop: '12px' }}>Zdjęcia</TitleText>
         <ImagesContainer>

@@ -15,9 +15,9 @@ export const StyledCarousel = styled(Carousel)`
   flex: 2;
   border: 1px solid darkorange;
   border-radius: 4px;
-  padding: 4px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
+  padding: 4px;
 `;
 
 export const InfoPanel = styled.div`
